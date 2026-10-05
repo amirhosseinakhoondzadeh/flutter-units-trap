@@ -11,7 +11,7 @@ void main() {
       ..add(byId('mug'))
       ..add(byId('mug'))
       ..add(byId('tote'));
-    expect(cart.total, closeTo(45.97, 1e-9));
+    expect(cart.total, 4597);
     expect(cart.itemCount, 3);
   });
 
