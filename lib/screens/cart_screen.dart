@@ -20,11 +20,11 @@ class CartScreen extends StatelessWidget {
             for (final line in cart.lines)
               ListTile(
                 title: Text('${line.quantity} x ${line.product.name}'),
-                trailing: Text(euro.format(line.total / 100)),
+                trailing: Text(formatCents(line.total)),
               ),
             ListTile(
               title: const Text('Total'),
-              trailing: Text(euro.format(cart.total / 100)),
+              trailing: Text(formatCents(cart.total)),
             ),
             Padding(
               padding: const EdgeInsets.all(16),

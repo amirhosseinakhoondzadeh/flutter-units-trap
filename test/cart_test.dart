@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shop/cart.dart';
 import 'package:shop/catalog.dart';
 import 'package:shop/checkout.dart';
+import 'package:shop/money.dart';
 
 void main() {
   Product byId(String id) => catalog.firstWhere((p) => p.id == id);
@@ -11,7 +12,7 @@ void main() {
       ..add(byId('mug'))
       ..add(byId('mug'))
       ..add(byId('tote'));
-    expect(cart.total, 4597);
+    expect(cart.total, const Cents(4597));
     expect(cart.itemCount, 3);
   });
 

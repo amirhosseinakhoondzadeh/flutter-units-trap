@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 import 'catalog.dart';
+import 'money.dart';
 
 class CartLine {
   CartLine(this.product, this.quantity);
@@ -8,7 +9,7 @@ class CartLine {
   final Product product;
   int quantity;
 
-  int get total => product.price * quantity;
+  Cents get total => product.price.times(quantity);
 }
 
 class Cart extends ChangeNotifier {
@@ -18,7 +19,7 @@ class Cart extends ChangeNotifier {
 
   int get itemCount => _lines.fold(0, (sum, line) => sum + line.quantity);
 
-  int get total => _lines.fold(0, (sum, line) => sum + line.total);
+  Cents get total => _lines.fold(const Cents(0), (sum, line) => sum + line.total);
 
   void add(Product product) {
     for (final line in _lines) {
