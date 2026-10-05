@@ -1,4 +1,10 @@
 import 'package:intl/intl.dart';
 
-/// Formats money for display, for example €12.99.
-final euro = NumberFormat.currency(locale: 'en_IE', symbol: '€');
+extension type const Cents(int value) {
+  Cents operator +(Cents other) => Cents(value + other.value);
+  Cents times(int n) => Cents(value * n);
+}
+
+final _euro = NumberFormat.currency(locale: 'en_IE', symbol: '€');
+
+String formatCents(Cents cents) => _euro.format(cents.value / 100);
